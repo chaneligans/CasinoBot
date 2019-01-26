@@ -4,12 +4,12 @@ import currency
 
 # coin flip game
 async def coin_flip(member_id, guess, bet_amount):
-    if currency.bet_is_enough(member_id, bet_amount):
+    if await currency.bet_is_enough(member_id, bet_amount):
         msg_result = 'Something\'s wrong! You shouldn\'t be seeing this.'
         guess_correct = False
         coin_num = random.randint(1, 2)
 
-        if guess != 'heads' and guess != 'tails':
+        if guess != 'heads' and guess != 'tails' and not bet_amount.isdigit():
             return 'Invalid input, try again! :anger:'
 
         if coin_num == 1:
@@ -32,4 +32,4 @@ async def coin_flip(member_id, guess, bet_amount):
             message = '{0} You lose {1}... :sob:\nYour new balance is {2} gold!'.format(msg_result, win_amount, new_balance)
             return message
     else:
-        return 'You do not have enough gold!'
+        return ':x: :moneybag: :x:  You do not have enough gold! :cold_sweat: :cold_sweat: '

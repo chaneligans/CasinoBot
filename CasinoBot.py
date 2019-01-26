@@ -33,15 +33,24 @@ async def on_message(message):
 
     # god given gold
     if message.content.startswith(prefix + 'godgold'):
-        print(message.mentions)
         recipient_id = message.mentions[0].id
-        await currency.give_gold(client, message.author.id, recipient_id, int(message.content.split()[2]))
+        msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]))
+        await client.send_message(message.channel, msg)
 
     # coin flip
     if message.content.startswith(prefix + 'flip'):
-        guess = message.content.split()[1]
-        result = await game_coin_flip.coin_flip(guess)
-        await client.send_message(message.channel, result)
+        try:
+            guess = message.content.split()[1]
+            bet_amount = message.content.split()[2]
+            bet_amount = int(bet_amount)
+            result = await game_coin_flip.coin_flip(message.author.id, guess, bet_amount)
+            await client.send_message(message.channel, result)
+        except IndexError:
+            await client.send_message(message.channel, ':anger: Error: Invalid input!! :anger:')
+        except ValueError:
+            await client.send_message(message.channel, ':anger: You did not enter a number!! :anger:')
+        except:
+            await client.send_message(message.channel, ':anger: Error: Something went wrong. :anger:')
 
 
 # prints to the console when the bot is live!
