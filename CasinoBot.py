@@ -1,6 +1,7 @@
 import discord
 
 client = discord.Client()
+prefix = '$'
 
 @client.event
 async def on_message(message):
@@ -8,9 +9,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!hello'):
+    if message.content.startswith(prefix + 'hello'):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
+
 
 @client.event
 async def on_ready():
@@ -18,5 +20,6 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+
 
 client.run('NTM4NTMxMzY4NTM2Mzc1MzA2.Dy1XOA.VEaHYhsjTy456Ge_g0OUCBktYEg')
