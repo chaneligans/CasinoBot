@@ -14,12 +14,13 @@ async def on_message(message):
         return
 
     if message.content.startswith(prefix + 'hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
+        msg = 'Hello {0.author.mention} :wave:!'.format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith(prefix + 'flip'):
-        guess = message.content[6:]
+        guess = message.content.split()[1]
         await coin_flip(message.channel, guess)
+
 
 @client.event
 async def on_ready():
@@ -35,6 +36,10 @@ async def coin_flip(channel, guess):
     guess_correct = False
     coin_num = random.randint(1, 2)
 
+    if guess != 'heads' and guess != 'tails':
+        await client.send_message(channel, 'Invalid input, try again! :anger:')
+        return
+
     if coin_num == 1:
         await client.send_message(channel, 'The coin landed on heads!')
         if guess == 'heads':
@@ -43,9 +48,6 @@ async def coin_flip(channel, guess):
         await client.send_message(channel, 'The coin landed on tails!')
         if guess == 'tails':
             guess_correct = True
-    else:
-        await client.send_message(channel, 'Invalid input, try again!')
-        return
 
     if guess_correct == True:
         await client.send_message(channel, msg_win)
