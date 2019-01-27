@@ -24,8 +24,12 @@ async def get_user_csv_info(member_id, server_id):
         with open(file_name) as members_file:
             print('Successfully opened ' + file_name)
     except FileNotFoundError:
-        with open(file_name, 'w+'):
+        with open(file_name, 'a') as members_file:
             print('Created new file ' + file_name)
+            fieldnames = ['member_id', 'currency_amt', 'is_admin', 'last_daily_time']
+            writer = csv.DictWriter(members_file, fieldnames=fieldnames)
+            writer.writerow({'member_id': 'member_id', 'currency_amt': 'currency_amt', 'is_admin': 'is_admin', 'last_daily_time': 'last_daily_time'})
+            print('Added header for ' + file_name)
     finally:
         file_name = server_id + '.csv'
         first_line = True
@@ -52,7 +56,7 @@ async def get_user_csv_currency_amt(member_id, server_id):
 
 # checks if user is an admin
 async def is_admin(member_id, server_id):
-    user = await get_user_csv_info(member_id,server_id)
+    user = await get_user_csv_info(member_id, server_id)
     is_admin = user[2]
     return is_admin
 

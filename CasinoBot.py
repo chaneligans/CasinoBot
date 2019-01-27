@@ -39,15 +39,26 @@ async def on_message(message):
 
     # god given gold
     if message.content.startswith(prefix + 'godgold'):
-        recipient_id = message.mentions[0].id
-        msg = await currency.god_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
-        await client.send_message(message.channel, msg)
+        try:
+            recipient_id = message.mentions[0].id
+            msg = await currency.god_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
+            await client.send_message(message.channel, msg)
+        except IndexError:
+            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Invalid input!! :anger:')
+        except ValueError:
+            await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
+        except:
+            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Something went wrong. :anger:')
 
     # god given gold
     if message.content.startswith(prefix + 'givegold'):
-        recipient_id = message.mentions[0].id
-        msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
-        await client.send_message(message.channel, msg)
+        try:
+            recipient_id = message.mentions[0].id
+            msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
+            await client.send_message(message.channel, msg)
+        except IndexError:
+            msg = 'Something went wrong!!! Try again :('
+            await client.send_message(message.channel, msg)
 
 
     # daily gold
@@ -89,5 +100,6 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+    client.change_presence(game=(discord.Game(name="my prefix is $")))
 
 client.run(CasinoBotToken.get_token())

@@ -16,11 +16,12 @@ async def update_currency(member_id, amount, server_id):
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
 async def god_gold(giver_id, recipient_id, amount, server_id):
-    if await member_csv_info.is_admin(giver_id, server_id):
+    print(await member_csv_info.is_admin(giver_id, server_id))
+    if (await member_csv_info.is_admin(giver_id, server_id)) == True:
         new_amt = await update_currency(recipient_id, amount, server_id)
         return ':angel: God just gave <@!{0}> {1} gold!! New balance: {2} gold :money_mouth: :money_mouth:'.format(recipient_id, amount, new_amt)
     else:
-        return 'You do not have the gold giving privilege!'
+        return ':japanese_goblin: You are not a god!'
 
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
