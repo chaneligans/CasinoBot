@@ -9,7 +9,7 @@ async def coin_flip(member_id, guess, bet_amount, server_id):
         guess_correct = False
         coin_num = random.randint(1, 2)
 
-        if guess != 'heads' and guess != 'tails' and not bet_amount.isdigit():
+        if guess != 'heads' and guess != 'tails' or not str(bet_amount).isdigit():
             return 'Invalid input, try again! :anger:'
 
         if coin_num == 1:
