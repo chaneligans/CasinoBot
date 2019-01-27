@@ -15,12 +15,19 @@ async def update_currency(member_id, amount, server_id):
 
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
-async def give_gold(giver_id, recipient_id, amount, server_id):
+async def god_gold(giver_id, recipient_id, amount, server_id):
     if await member_csv_info.is_admin(giver_id, server_id):
         new_amt = await update_currency(recipient_id, amount, server_id)
         return ':angel: God just gave <@!{0}> {1} gold!! New balance: {2} gold :money_mouth: :money_mouth:'.format(recipient_id, amount, new_amt)
     else:
         return 'You do not have the gold giving privilege!'
+
+
+# gives a user gold (not from the giver's bank) if the giver is an admin
+async def give_gold(giver_id, recipient_id, amount, server_id):
+    giver_new_amt = await update_currency(giver_id, -amount, server_id)
+    recipient_new_amt = await update_currency(recipient_id, amount, server_id)
+    return ':angel: <@!{0}> just gave <@!{1}> {2} gold!!'.format(giver_id, recipient_id, amount)
 
 
 # checks if the bet amount is greater than the amount of current gold

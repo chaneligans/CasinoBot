@@ -40,8 +40,15 @@ async def on_message(message):
     # god given gold
     if message.content.startswith(prefix + 'godgold'):
         recipient_id = message.mentions[0].id
+        msg = await currency.god_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
+        await client.send_message(message.channel, msg)
+
+    # god given gold
+    if message.content.startswith(prefix + 'givegold'):
+        recipient_id = message.mentions[0].id
         msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
         await client.send_message(message.channel, msg)
+
 
     # daily gold
     if message.content.startswith(prefix + 'blessing'):
