@@ -1,6 +1,7 @@
 import discord
 import CasinoBotToken
 
+import game_rock_paper_scissors
 import game_lightning
 import game_coin_flip
 import currency
@@ -83,13 +84,25 @@ async def on_message(message):
             await client.send_message(message.channel, message.author.mention + ', :anger: Error: Invalid input!! :anger:')
         except ValueError:
             await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
-        except:
-            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Something went wrong. :anger:')
 
     # lightning game
     if message.content.startswith(prefix + 'lightning'):
         msg = message.author.mention + ': ' + await game_lightning.lightning(message.author.id, message.server.id)
         await client.send_message(message.channel, msg)
+
+    # rock paper scissors
+    if message.content.startswith(prefix + 'rps'):
+        try:
+            user_message = message.content.split()
+            shot = user_message[1]
+            bet_amount = int(user_message[2])
+            result = await game_rock_paper_scissors.rock_paper_scissors(message.author.id, shot, bet_amount, message.server.id)
+            msg = '{0}\n{1.author.mention}{2}\n{3}'.format(result[0], message, result[1], result[2])
+            await client.send_message(message.channel, msg)
+        except IndexError:
+            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Invalid input!! :anger:')
+        except ValueError:
+            await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
 
 
 
@@ -99,7 +112,7 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
+    client.change_status(game=(discord.Game(name="my prefix is $")))
     print('------')
-    client.change_presence(game=(discord.Game(name="my prefix is $")))
 
 client.run(CasinoBotToken.get_token())

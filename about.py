@@ -17,6 +17,7 @@ async def about():
     games = '```diff' \
             '\n-$𝗳𝗹𝗶𝗽 [heads / tails] [bet amount] - bet on the flip of a coin.' \
             '\n-$𝗹𝗶𝗴𝗵𝘁𝗻𝗶𝗻𝗴 - lightning strikes!' \
+            '\n-$𝗿𝗽𝘀 [rock / paper / scissors] [bet amount]- rock paper scissors!' \
             '```'
     embed = discord.Embed(title="𝖈𝖆𝖘𝖎𝖓𝖔💸 Help", description='Help is here!!!',  color=0xFFFFFF)
     embed.add_field(name="About", value=about_message, inline=False)
