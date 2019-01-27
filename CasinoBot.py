@@ -53,7 +53,7 @@ async def on_message(message):
             await client.send_message(message.channel, ':anger: Error: Something went wrong. :anger:')
 
     # daily gold
-    if message.content.startswith(prefix + 'daily'):
+    if message.content.startswith(prefix + 'blessing'):
         msg = await currency.daily_gold(message.author.id)
         await client.send_message(message.channel, msg)
 

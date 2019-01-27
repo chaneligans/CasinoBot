@@ -27,7 +27,7 @@ async def coin_flip(member_id, guess, bet_amount):
             message = '{0} You win {1}:bangbang: :tada:\nYour new balance is {2} gold!'.format(msg_result, win_amount, new_balance)
             return message
         else:
-            win_amount = bet_amount * -2
+            win_amount = -bet_amount
             new_balance = await currency.update_currency(member_id, win_amount)
             message = '{0} You lose {1}... :sob:\nYour new balance is {2} gold!'.format(msg_result, win_amount, new_balance)
             return message
