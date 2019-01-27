@@ -1,40 +1,17 @@
 import member_csv_info
-from tempfile import NamedTemporaryFile
-import csv
-import shutil
+import time
 
 
 # returns the amount of gold a user has
 async def get_currency_amount(member_id):
-    currency_amount = await member_csv_info.get_user_csv_info(member_id)
-    currency_amount = int(currency_amount[1])
+    currency_amount = await member_csv_info.get_user_csv_currency_amt(member_id)
     return currency_amount
 
 
 # updates the user's currency amount
 # returns new currency
 async def update_currency(member_id, amount):
-    old_currency_amount = await get_currency_amount(member_id)
-    new_currency_amount = old_currency_amount + int(amount)
-    if new_currency_amount < 0:
-        new_currency_amount = 0
-
-    file_name = 'members.csv'
-    tempfile = NamedTemporaryFile(mode='w', delete=False)
-    fields = ['member_id', 'currency_amt', 'is_admin']
-
-    with open(file_name, 'r+') as members_file, tempfile:
-        reader = csv.DictReader(members_file, fieldnames=fields)
-        writer = csv.DictWriter(tempfile, fieldnames=fields)
-
-        for row in reader:
-            if row['member_id'] == member_id:
-                print('updating row', row['member_id'])
-                row['member_id'], row['currency_amt'], row['is_admin'] = member_id, new_currency_amount, row['is_admin']
-            row = {'member_id': row['member_id'], 'currency_amt': row['currency_amt'], 'is_admin': row['is_admin']}
-            writer.writerow(row)
-    shutil.move(tempfile.name, file_name)
-    return new_currency_amount
+    return await member_csv_info.set_currency(member_id, amount)
 
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
@@ -56,6 +33,15 @@ async def bet_is_enough(member_id, bet_amount):
 # returns a messagae with the new currency amount
 async def daily_gold(member_id):
     daily_amt = 125
-    new_currency_amt = await update_currency(member_id, daily_amt)
-    message = ':money_mouth: The casino gods have awarded you with 125 gold!! Your new balance is {0} gold :money_mouth:'.format(new_currency_amt)
+    hour_in_secs = 60.0 * 60.0
+    if await member_csv_info.get_user_csv_daily_time(member_id) == -1:
+        new_currency_amt = await update_currency(member_id, daily_amt)
+        message = ':money_mouth: The casino gods have awarded you with 125 gold!! Your new balance is {0} gold :money_mouth:'.format(new_currency_amt)
+        await member_csv_info.set_last_daily_time(member_id)
+    else:
+        next_daily_time = await member_csv_info.get_user_csv_daily_time(member_id) + hour_in_secs
+        time_remaining = next_daily_time - time.time()
+        time_remaining_min = int(time_remaining // 60)
+        time_remaining_sec = int(time_remaining % 60)
+        message = 'The gods don\'t feel like blessing you right now... Try again in {0} minutes and {1} seconds.'.format(time_remaining_min, time_remaining_sec)
     return message

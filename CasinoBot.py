@@ -52,6 +52,12 @@ async def on_message(message):
         except:
             await client.send_message(message.channel, ':anger: Error: Something went wrong. :anger:')
 
+    # daily gold
+    if message.content.startswith(prefix + 'daily'):
+        msg = await currency.daily_gold(message.author.id)
+        await client.send_message(message.channel, msg)
+
+
 
 # prints to the console when the bot is live!
 @client.event
