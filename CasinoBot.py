@@ -27,21 +27,25 @@ async def on_message(message):
     if message.content.startswith(prefix + 'id'):
         await client.send_message(message.channel, message.author.id)
 
+    # outputs the server's id (for testing)
+    if message.content.startswith(prefix + 'serverid'):
+        await client.send_message(message.channel, message.server.id)
+
     # get user currency amount
     if message.content.startswith(prefix + 'bank'):
-        currency_amt = await currency.get_currency_amount(message.author.id)
+        currency_amt = await currency.get_currency_amount(message.author.id, message.server.id)
         msg = '{0.author.mention}, you have {1} gold.'.format(message, currency_amt)
         await client.send_message(message.channel, msg)
 
     # god given gold
     if message.content.startswith(prefix + 'godgold'):
         recipient_id = message.mentions[0].id
-        msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]))
+        msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]), message.server.id)
         await client.send_message(message.channel, msg)
 
     # daily gold
     if message.content.startswith(prefix + 'blessing'):
-        msg = await currency.daily_gold(message.author.id)
+        msg = message.author.mention + ', ' + await currency.daily_gold(message.author.id, message.server.id)
         await client.send_message(message.channel, msg)
 
     # help
@@ -55,18 +59,18 @@ async def on_message(message):
             guess = message.content.split()[1]
             bet_amount = message.content.split()[2]
             bet_amount = int(bet_amount)
-            result = await game_coin_flip.coin_flip(message.author.id, guess, bet_amount)
-            await client.send_message(message.channel, result)
+            result = await game_coin_flip.coin_flip(message.author.id, guess, bet_amount, message.server.id)
+            await client.send_message(message.channel, message.author.mention + ', ' + result)
         except IndexError:
-            await client.send_message(message.channel, ':anger: Error: Invalid input!! :anger:')
+            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Invalid input!! :anger:')
         except ValueError:
-            await client.send_message(message.channel, ':anger: You did not enter a number!! :anger:')
+            await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
         except:
-            await client.send_message(message.channel, ':anger: Error: Something went wrong. :anger:')
+            await client.send_message(message.channel, message.author.mention + ', :anger: Error: Something went wrong. :anger:')
 
     # lightning game
     if message.content.startswith(prefix + 'lightning'):
-        msg = await game_lightning.lightning(message.author.id)
+        msg = message.author.mention + ': ' + await game_lightning.lightning(message.author.id, message.server.id)
         await client.send_message(message.channel, msg)
 
 

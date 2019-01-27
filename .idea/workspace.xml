@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a6f61071-b38e-4203-af9f-a1d5ce560cb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/CasinoBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/CasinoBot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.py" beforeDir="false" afterPath="$PROJECT_DIR$/about.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/currency.py" beforeDir="false" afterPath="$PROJECT_DIR$/currency.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_coin_flip.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_coin_flip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_lightning.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_lightning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member_csv_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/member_csv_info.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/members.csv" beforeDir="false" afterPath="$PROJECT_DIR$/members.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CasinoBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+            <state relative-caret-position="1343">
+              <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -40,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/currency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+            <state relative-caret-position="697">
+              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -49,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game_lightning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="714">
+              <caret line="42" column="284" selection-start-line="42" selection-start-column="284" selection-end-line="42" selection-end-column="284" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -61,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/member_csv_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="340">
+              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -74,10 +75,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/366447116899319809.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game_coin_flip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="110" selection-start-line="31" selection-start-column="110" selection-end-line="31" selection-end-column="110" />
+            <state relative-caret-position="399">
+              <caret line="30" column="89" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="89" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -99,6 +109,9 @@
       <find>get_user_info</find>
       <find>get_user_csv</find>
       <find>is_admin</find>
+      <find>member_csv_info</find>
+      <find>message.guild</find>
+      <find>message.server</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,13 +122,14 @@
       <list>
         <option value="$PROJECT_DIR$/token.py" />
         <option value="$PROJECT_DIR$/CasinoBotToken.py" />
-        <option value="$PROJECT_DIR$/member_csv_info.py" />
-        <option value="$PROJECT_DIR$/currency.py" />
         <option value="$PROJECT_DIR$/members.csv" />
-        <option value="$PROJECT_DIR$/CasinoBot.py" />
         <option value="$PROJECT_DIR$/about.py" />
+        <option value="$PROJECT_DIR$/currency.py" />
         <option value="$PROJECT_DIR$/game_coin_flip.py" />
+        <option value="$PROJECT_DIR$/CasinoBot.py" />
         <option value="$PROJECT_DIR$/game_lightning.py" />
+        <option value="$PROJECT_DIR$/366447116899319809.csv" />
+        <option value="$PROJECT_DIR$/member_csv_info.py" />
       </list>
     </option>
   </component>
@@ -257,13 +271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/members.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/discord/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -271,30 +278,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/member_csv_info.py">
+    <entry file="file://$PROJECT_DIR$/members.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state relative-caret-position="136">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game_coin_flip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="30" column="89" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="89" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/currency.py">
+    <entry file="file://$PROJECT_DIR$/366447116899319809.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CasinoBot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="68" column="62" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+        <state relative-caret-position="1343">
+          <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -308,22 +319,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game_coin_flip.py">
+    <entry file="file://$PROJECT_DIR$/currency.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="110" selection-start-line="31" selection-start-column="110" selection-end-line="31" selection-end-column="110" />
+        <state relative-caret-position="697">
+          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game_lightning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="714">
+          <caret line="42" column="284" selection-start-line="42" selection-start-column="284" selection-end-line="42" selection-end-column="284" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/member_csv_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
