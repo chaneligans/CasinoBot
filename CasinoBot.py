@@ -1,8 +1,10 @@
 import discord
 import CasinoBotToken
 
+import game_lightning
 import game_coin_flip
 import currency
+import about
 
 client = discord.Client()
 global prefix
@@ -37,6 +39,16 @@ async def on_message(message):
         msg = await currency.give_gold(message.author.id, recipient_id, int(message.content.split()[2]))
         await client.send_message(message.channel, msg)
 
+    # daily gold
+    if message.content.startswith(prefix + 'blessing'):
+        msg = await currency.daily_gold(message.author.id)
+        await client.send_message(message.channel, msg)
+
+    # help
+    if message.content.startswith(prefix + 'help'):
+        msg = await about.about()
+        await client.send_message(message.channel, embed=msg)
+
     # coin flip
     if message.content.startswith(prefix + 'flip'):
         try:
@@ -52,9 +64,9 @@ async def on_message(message):
         except:
             await client.send_message(message.channel, ':anger: Error: Something went wrong. :anger:')
 
-    # daily gold
-    if message.content.startswith(prefix + 'blessing'):
-        msg = await currency.daily_gold(message.author.id)
+    # lightning game
+    if message.content.startswith(prefix + 'lightning'):
+        msg = await game_lightning.lightning(message.author.id)
         await client.send_message(message.channel, msg)
 
 

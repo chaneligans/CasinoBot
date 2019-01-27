@@ -29,7 +29,7 @@ async def coin_flip(member_id, guess, bet_amount):
         else:
             win_amount = -bet_amount
             new_balance = await currency.update_currency(member_id, win_amount)
-            message = '{0} You lose {1}... :sob:\nYour new balance is {2} gold!'.format(msg_result, win_amount, new_balance)
+            message = '{0} You lose {1}... :sob:\nYour new balance is {2} gold!'.format(msg_result, bet_amount, new_balance)
             return message
     else:
         return ':x: :moneybag: :x:  You do not have enough gold! :cold_sweat: :cold_sweat: '
