@@ -79,6 +79,7 @@ async def get_user_csv_currency_amt(member_id, server_id):
 async def is_admin(member_id, server_id):
     user = await get_user_csv_info(member_id, server_id)
     is_admin = user[2]
+    print("isadmin: " + is_admin)
     return is_admin
 
 

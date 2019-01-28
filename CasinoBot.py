@@ -1,6 +1,7 @@
 import discord
 import CasinoBotToken
 
+import game_dice_roll
 import game_rock_paper_scissors
 import game_lightning
 import game_coin_flip
@@ -107,6 +108,23 @@ async def on_message(message):
             await client.send_message(message.channel, message.author.mention + ', :anger: Error: Invalid input!! :anger:')
         except ValueError:
             await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
+
+    # dice roll
+    if message.content.startswith(prefix + 'roll'):
+        try:
+            user_message = message.content.split()
+            num_sides = int(user_message[1])
+            guess = int(user_message[2])
+            bet_amount = int(user_message[3])
+            result = await game_dice_roll.dice_roll(message.author.id, bet_amount, num_sides, guess, message.server.id)
+            msg = message.author.mention + ', ' + result
+            await client.send_message(message.channel, msg)
+        except IndexError:
+            await client.send_message(message.channel,
+                                      message.author.mention + ', :anger: Error: Invalid input!! :anger:')
+        except ValueError:
+            await client.send_message(message.channel,
+                                      message.author.mention + ', :anger: You did not enter a number!! :anger:')
 
 
 # prints to the console when the bot is live!
