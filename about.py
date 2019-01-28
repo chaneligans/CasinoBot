@@ -21,8 +21,15 @@ async def about():
             '\n-$𝗿𝗼𝗹𝗹 [num sides] [guess] [bet amount]- bet on the roll of a die.' \
             '\n-$𝗿𝗽𝘀 [rock / paper / scissors] [bet amount]- rock paper scissors!' \
             '```'
+    sponsors = 'Special shoutout to my sponsors!!!' \
+               '\n```md' \
+               '\n# Ronald K. - $kem - [to be decided]' \
+               '\n# Austin M. - $phun - displays a pun' \
+               '\n# Collin C. - $playin - [to be decided]' \
+               '\n```'
     embed = discord.Embed(title="𝖈𝖆𝖘𝖎𝖓𝖔💸 Help", description='Help is here!!!',  color=0xFFFFFF)
     embed.add_field(name="About", value=about_message, inline=False)
     embed.add_field(name="Commands", value=commands, inline=False)
     embed.add_field(name="Games", value=games, inline=False)
+    embed.add_field(name="Sponsors", value=sponsors, inline=False)
     return embed
