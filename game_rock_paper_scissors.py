@@ -40,7 +40,7 @@ async def rock_paper_scissors(member_id, shot, bet_amount, server_id):
             if shot == 'rock':
                 await currency.update_currency(member_id, -bet_amount, server_id)
                 user_result = user + rock
-                status = 'You lost **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount, await currency.get_currency_amount(member_id, server_id))
+                status = 'You lost **{0} gold**! :sob: :sob: :moneybag: New Balance: **{1} gold**!'.format(bet_amount, await currency.get_currency_amount(member_id, server_id))
             elif shot == 'paper':
                 user_result = user + paper
                 status = status_tie
@@ -58,7 +58,7 @@ async def rock_paper_scissors(member_id, shot, bet_amount, server_id):
             elif shot == 'paper':
                 await currency.update_currency(member_id, -bet_amount, server_id)
                 user_result = user + paper
-                status = 'You lost **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount, await currency.get_currency_amount(member_id, server_id))
+                status = 'You lost **{0} gold**! :sob: :sob: :moneybag: New Balance: **{1} gold**!'.format(bet_amount, await currency.get_currency_amount(member_id, server_id))
             elif shot == 'scissors':
                 user_result = user + scissors
                 status = status_tie
