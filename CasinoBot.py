@@ -39,7 +39,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith(prefix + 'top'):
-        msg = await currency.top_five_to_string(message.server.id)
+        msg = await currency.top_five_to_string(message.server.id, client)
         await client.send_message(message.channel, msg)
 
     # god given gold
