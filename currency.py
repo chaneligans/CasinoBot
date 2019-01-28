@@ -1,6 +1,8 @@
 import member_csv_info
 import time
-
+from operator import itemgetter
+import discord
+client = discord.Client()
 
 # returns the amount of gold a user has
 async def get_currency_amount(member_id, server_id):
@@ -53,4 +55,32 @@ async def daily_gold(member_id, server_id):
         time_remaining_min = int(time_remaining // 60)
         time_remaining_sec = int(time_remaining % 60)
         message = 'The gods don\'t feel like blessing you right now... Try again in {0} minutes and {1} seconds.'.format(time_remaining_min, time_remaining_sec)
+    return message
+
+
+# returns a list of the top 5 users with the most gold
+async def get_top_five(server_id):
+    members = await member_csv_info.get_server_members(server_id)
+    get_count = itemgetter(1)
+    sorted_list = sorted(members, key=get_count, reverse=True)
+    num_members = len(members)
+    if num_members < 5:
+        top_five = sorted_list[0:num_members]
+    else:
+        top_five = sorted_list[0:5]
+    return top_five
+
+
+# formats the top 5 list
+async def top_five_to_string(server_id):
+    top_five = await get_top_five(server_id)
+    message = ''
+    first_line = True
+    for i in range(len(top_five)):
+        id =  top_five[i][0]
+        if first_line:
+            message += '{0}. <@!{1}> - {2} gold'.format(i+1, id, top_five[i][1])
+            first_line = False
+        else:
+            message += '\n{0}. <@!{1}> - {2} gold'.format(i+1, id, top_five[i][1])
     return message

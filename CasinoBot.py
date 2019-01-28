@@ -38,6 +38,10 @@ async def on_message(message):
         msg = '{0.author.mention}, you have {1} gold.'.format(message, currency_amt)
         await client.send_message(message.channel, msg)
 
+    if message.content.startswith(prefix + 'top'):
+        msg = await currency.top_five_to_string(message.server.id)
+        await client.send_message(message.channel, msg)
+
     # god given gold
     if message.content.startswith(prefix + 'godgold'):
         try:
@@ -51,7 +55,7 @@ async def on_message(message):
         except:
             await client.send_message(message.channel, message.author.mention + ', :anger: Error: Something went wrong. :anger:')
 
-    # god given gold
+    # users give gold
     if message.content.startswith(prefix + 'givegold'):
         try:
             recipient_id = message.mentions[0].id
@@ -105,14 +109,12 @@ async def on_message(message):
             await client.send_message(message.channel, message.author.mention + ', :anger: You did not enter a number!! :anger:')
 
 
-
 # prints to the console when the bot is live!
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
-    client.change_status(game=(discord.Game(name="my prefix is $")))
     print('------')
 
 client.run(CasinoBotToken.get_token())

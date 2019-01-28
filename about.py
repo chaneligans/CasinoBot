@@ -13,7 +13,8 @@ async def about():
                '\n$𝗯𝗮𝗻𝗸 - displays the amount of gold you\'ve accumulated.' \
                '\n$𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 - will the gods grant you a blessing?' \
                '\n$𝗴𝗶𝘃𝗲𝗴𝗼𝗹𝗱 [@recipient] - give gold to your friends!' \
-               '\n$𝗵𝗲𝗹𝗽 - displays this message.```'
+               '\n$𝗵𝗲𝗹𝗽 - displays this message.' \
+               '\n$𝘁𝗼𝗽 - displays the users with the most gold!```'
     games = '```diff' \
             '\n-$𝗳𝗹𝗶𝗽 [heads / tails] [bet amount] - bet on the flip of a coin.' \
             '\n-$𝗹𝗶𝗴𝗵𝘁𝗻𝗶𝗻𝗴 - lightning strikes!' \
