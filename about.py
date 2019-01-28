@@ -23,9 +23,9 @@ async def about():
             '```'
     sponsors = 'Special shoutout to my sponsors!!!' \
                '\n```md' \
-               '\n# Ronald K. - $kem - [to be decided]' \
-               '\n# Austin M. - $phun - displays a pun' \
-               '\n# Collin C. - $playin - [to be decided]' \
+               '\n# Ronald K. - $𝗸𝗲𝗺 - [to be decided]' \
+               '\n# Austin M. - $𝗽𝗵𝘂𝗻 - displays a pun' \
+               '\n# Collin C. - $𝗽𝗹𝗮𝘆𝗶𝗻 - [to be decided]' \
                '\n```'
     embed = discord.Embed(title="𝖈𝖆𝖘𝖎𝖓𝖔💸 Help", description='Help is here!!!',  color=0xFFFFFF)
     embed.add_field(name="About", value=about_message, inline=False)

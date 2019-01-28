@@ -255,7 +255,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     help_msg = '{0}help'.format(BOT_PREFIX[0])
-    await client.change_presence(game=discord.Game(name="cas help"))
+    await client.change_presence(game=discord.Game(name=help_msg))
     print('------')
 
 client.run(TOKEN)
