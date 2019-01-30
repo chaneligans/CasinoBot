@@ -24,3 +24,8 @@ async def kem():
 # to be decided
 async def playin():
     return 'Collin has yet to decide what this command will do.'
+
+
+# Phoenix Ngan - $fb
+async def flipbattle():
+    return 'This function has yet to be implemented.'

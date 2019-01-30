@@ -26,6 +26,7 @@ async def about():
                '\n# Ronald K. - $𝗸𝗲𝗺 - [to be decided]' \
                '\n# Austin M. - $𝗽𝗵𝘂𝗻 - displays a pun' \
                '\n# Collin C. - $𝗽𝗹𝗮𝘆𝗶𝗻 - [to be decided]' \
+               '\n# Phoenix N. - $𝗳𝗯 - flip battle against a friend!' \
                '\n```'
     embed = discord.Embed(title="𝖈𝖆𝖘𝖎𝖓𝖔💸 Help", description='Help is here!!!',  color=0xFFFFFF)
     embed.add_field(name="About", value=about_message, inline=False)

@@ -245,6 +245,12 @@ async def playin():
     await client.say(await sponsors.playin())
 
 
+# Phoenix $fb
+@client.command(name='flipbattle',
+                alias=['fb', 'bf', 'battleflip'])
+async def flipbattle():
+    await client.say(await sponsors.flipbattle())
+
 
 ##### ON READY #####
 
