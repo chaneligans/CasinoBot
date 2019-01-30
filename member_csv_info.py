@@ -2,12 +2,15 @@ import csv
 from tempfile import NamedTemporaryFile
 import shutil
 import time
+from pathlib import Path
+
+data_folder = Path('serverdata/')
 
 
 # tests if the server has a file, creates one if it does not exist
 # returns the file name
 async def open_file(server_id):
-    file_name = server_id + '.csv'
+    file_name = data_folder / (server_id + '.csv')
     try:
         with open(file_name) as members_file:
             print('Successfully opened ' + file_name)
@@ -98,7 +101,7 @@ async def set_currency(member_id, amount, server_id):
     if new_currency_amount < 0:
         new_currency_amount = 0
 
-    file_name = server_id + '.csv'
+    file_name = data_folder / (server_id + '.csv')
     tempfile = NamedTemporaryFile(mode='w', delete=False)
     fields = ['member_id', 'currency_amt', 'is_admin', 'last_daily_time']
 
@@ -119,7 +122,7 @@ async def set_currency(member_id, amount, server_id):
 # updates the last time the user recieved their daily gold to the time the function was called
 async def set_last_daily_time(member_id, server_id):
     new_time = time.time()
-    file_name = server_id + '.csv'
+    file_name = data_folder / (server_id + '.csv')
     tempfile = NamedTemporaryFile(mode='w', delete=False)
     fields = ['member_id', 'currency_amt', 'is_admin', 'last_daily_time']
 
