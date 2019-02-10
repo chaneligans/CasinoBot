@@ -1,11 +1,13 @@
 import random
 
-import about
-import currency
 import discord
 from discord.ext.commands import Bot
 
+import casinodb
+import about
+import currency
 import CasinoBotToken
+import game_eightball
 import game_coin_flip
 import game_dice_roll
 import game_lightning
@@ -42,7 +44,7 @@ async def user_id(context):
 # outputs the server's id for testing
 @client.command(pass_context=True)
 async def server_id(context):
-    msg = 'This server\'s id is: {0}'.format(context.message.author.id)
+    msg = 'This server\'s id is: {0}'.format(context.message.server.id)
     await client.say(msg)
 
 
@@ -142,15 +144,8 @@ async def on_message(message):
                 aliases=['8', 'eightball'],
                 pass_context=True)
 async def eight_ball(context):
-    possible_responses = [
-        'Ayo bitch no.'
-        'Yes.'
-        'My mommy says maybe.'
-        'Ask someone else!'
-        'That does not seem likely.'
-        'Of course.'
-    ]
-    await client.say(context.message.author.mention + ',' + random.choice(possible_responses))
+    msg = game_eightball.eightball()
+    await client.say(context.message.author.mention + ',' + random.choice(msg))
 
 
 # coin flip
@@ -250,6 +245,13 @@ async def playin():
                 alias=['fb', 'bf', 'battleflip'])
 async def flipbattle():
     await client.say(await sponsors.flipbattle())
+
+
+# Phoenix $fb
+@client.command(name='db',
+                pass_context=True)
+async def db(context):
+    await casinodb.db_get_user_info(context.message.author.id, context.message.server.id)
 
 
 ##### ON READY #####
