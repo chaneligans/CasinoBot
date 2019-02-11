@@ -2,10 +2,26 @@ import pymysql
 import time
 import CasinoBotToken
 
+DB_PW = CasinoBotToken.get_dbpw()
 
-# open database connection
-database = pymysql.connect(host='localhost', user='root', password=CasinoBotToken.get_dbpw(), db='casinodb', autocommit=True)
-print("Connected to casinodb")
+try:
+    # open database connection
+    database = pymysql.connect(host='localhost', user='root', password=DB_PW, db='pi_casinodb', autocommit=True)
+    print("Connected to pi_casinodb")
+except Exception as e:
+    print("Failed to connect to database: ", e)
+    print("Attempting to create new database")
+    database = pymysql.connect(host='localhost', user='root', password=DB_PW, autocommit=True)
+    database.cursor().execute('CREATE DATABASE pi_casinodb;')
+    database.cursor().execute('CREATE TABLE pi_casinodb.user ('
+                              'userID VARCHAR(25) NOT NULL, '
+                              'serverID VARCHAR(25) NOT NULL, '
+                              'currencyAmt INT, '
+                              'lastDailyTime FLOAT, '
+                              'PRIMARY KEY (userID, serverID));')
+    database = pymysql.connect(host='localhost', user='user', password=DB_PW, db='pi_casinodb', autocommit=True)
+    print("Created new database, now connected to pi_casinodb")
+
 
 
 # checks if a user exists in the database
