@@ -19,12 +19,9 @@ async def update_currency(member_id, amount, server_id):
 
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
-async def god_gold(giver_id, recipient_id, amount, server_id):
-    if True:
-        new_amt = await update_currency(recipient_id, amount, server_id)
-        return ':angel: God just gave <@!{0}> {1} gold!! New balance: {2} gold :money_mouth: :money_mouth:'.format(recipient_id, amount, new_amt)
-    else:
-        return ':japanese_goblin: You are not a god!'
+async def god_gold(recipient_id, amount, server_id):
+    new_amt = await update_currency(recipient_id, amount, server_id)
+    return ':angel: God just gave <@!{0}> {1} gold!! New balance: {2} gold :money_mouth: :money_mouth:'.format(recipient_id, amount, new_amt)
 
 
 # gives a user gold (not from the giver's bank) if the giver is an admin
@@ -79,10 +76,13 @@ async def get_top_five(server_id):
 # formats the top 5 list
 async def top_five_to_string(server_id, client):
     top_five = await get_top_five(server_id)
-    message = 'Here are the **top '+ str(len(top_five)) + '** users!' \
-              '```diff'
-    for i in range(len(top_five)):
-        uid = top_five[i][0]
-        name = await discord.Client.get_user_info(self=client, user_id=uid)
-        message += '\n-{0}. {1} - {2} gold'.format(i+1, name, top_five[i][2])
-    return message + '```'
+    if len(top_five) > 0:
+        message = 'Here are the **top '+ str(len(top_five)) + '** users!' \
+                  '```diff'
+        for i in range(len(top_five)):
+            uid = top_five[i][0]
+            name = await discord.Client.get_user_info(self=client, user_id=uid)
+            message += '\n-{0}. {1} - {2} gold'.format(i+1, name, top_five[i][2])
+        return message + '```'
+    else:
+        return ':worried: No one has any gold! Use **$blessing** to get some! :moneybag:'
