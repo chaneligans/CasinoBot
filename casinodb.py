@@ -19,7 +19,7 @@ except Exception as e:
                               'currencyAmt INT, '
                               'lastDailyTime FLOAT, '
                               'PRIMARY KEY (userID, serverID));')
-    database = pymysql.connect(host='localhost', user='user', password=DB_PW, db='pi_casinodb', autocommit=True)
+    database = pymysql.connect(host='localhost', user='root', password=DB_PW, db='pi_casinodb', autocommit=True)
     print("Created new database, now connected to pi_casinodb")
 
 
