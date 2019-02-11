@@ -29,7 +29,7 @@ async def rock_paper_scissors(member_id, shot, bet_amount, server_id):
             elif shot == 'paper':
                 user_result = user + paper
                 await currency.update_currency(member_id, bet_amount, server_id)
-                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 2, await currency.get_currency_amount(member_id, server_id))
+                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 3, await currency.get_currency_amount(member_id, server_id))
             elif shot == 'scissors':
                 user_result = user + scissors
                 await currency.update_currency(member_id, -bet_amount, server_id)
@@ -47,14 +47,14 @@ async def rock_paper_scissors(member_id, shot, bet_amount, server_id):
             elif shot == 'scissors':
                 user_result = user + scissors
                 await currency.update_currency(member_id, bet_amount, server_id)
-                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 2, await currency.get_currency_amount(member_id, server_id))
+                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 3, await currency.get_currency_amount(member_id, server_id))
         # scissors
         else:
             casino_result = casino + scissors
             if shot == 'rock':
                 user_result = user + rock
                 await currency.update_currency(member_id, bet_amount, server_id)
-                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 2, await currency.get_currency_amount(member_id, server_id))
+                status = 'You won **{0} gold**! :tada: :tada: :moneybag: New Balance: **{1} gold**!'.format(bet_amount * 3, await currency.get_currency_amount(member_id, server_id))
             elif shot == 'paper':
                 await currency.update_currency(member_id, -bet_amount, server_id)
                 user_result = user + paper

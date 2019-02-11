@@ -93,7 +93,6 @@ async def db_get_last_blessing_time(member_id, server_id):
 async def db_set_currency(member_id, server_id, currency_amt):
     try:
         await validate_user(member_id, server_id)
-        print("MID: ", member_id, " SID: ", server_id, " CA: ", currency_amt)
         cursor = database.cursor()
         sql = 'UPDATE user ' \
               'SET currencyAmt = {0} ' \

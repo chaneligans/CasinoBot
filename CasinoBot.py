@@ -48,6 +48,13 @@ async def server_id(context):
     await client.say(msg)
 
 
+# get the user name from the id
+@client.command(pass_context=True)
+async def get_user(context):
+    uid = context.message.content.split()[1]
+    await client.say('<@!{0}>'.format(uid))
+
+
 ##### CURRENCY #####
 
 
@@ -244,7 +251,7 @@ async def playin():
 
 # Phoenix $fb
 @client.command(name='flipbattle',
-                alias=['fb', 'bf', 'battleflip'])
+                aliases=['fb', 'bf', 'battleflip'])
 async def flipbattle():
     await client.say(await sponsors.flipbattle())
 
@@ -263,6 +270,7 @@ async def db(context):
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
+    print('Running on {0} server(s)!'.format(len(client.servers)))
     print(client.user.id)
     help_msg = '{0}help'.format(BOT_PREFIX[0])
     await client.change_presence(game=discord.Game(name=help_msg))
