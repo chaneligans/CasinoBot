@@ -80,9 +80,11 @@ async def top(context):
                 pass_context=True)
 async def godgold(context):
     try:
-        recipient_id = context.message.mentions[0].id
-        msg = await currency.god_gold(context.message.author.id, recipient_id, int(context.message.content.split()[2]),
-                                      context.message.server.id)
+        if context.message.author.server_permissions.administrator:
+            recipient_id = context.message.mentions[0].id
+            msg = await currency.god_gold(recipient_id, int(context.message.content.split()[2]), context.message.server.id)
+        else:
+            msg = "You are not a god!"
         await client.say(msg)
     except IndexError:
         await client.say(context.message.author.mention + ', :anger: Error: Invalid input!! :anger:')
