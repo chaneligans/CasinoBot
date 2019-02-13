@@ -14,7 +14,7 @@ import game_lightning
 import game_rock_paper_scissors
 import sponsors
 
-BOT_PREFIX = ("$", 'cas', 'casino')
+BOT_PREFIX = ("!!!", 'cas', 'casino')
 TOKEN = CasinoBotToken.get_token()
 
 client = Bot(command_prefix=BOT_PREFIX)
@@ -263,7 +263,21 @@ async def db(context):
     await casinodb.db_get_user_info(context.message.author.id, context.message.server.id)
 
 
+@client.event
+async def on_server_join(server):
+    print('Joined new server ', server.name)
+    print('Now running on {0} servers!\n'.format(len(client.servers)))
+    msg = ':money_mouth: :money_mouth: Thanks for adding me to **{0}**! My **prefixes** are **{1}**. If you need' \
+          ' help with anything, enter **{2}help**! :money_with_wings:'.format(server.name, BOT_PREFIX, BOT_PREFIX[0])
+
+    for channel in server.channels:
+        if not isinstance(channel.type, int):
+            if channel.permissions_for(server.me).send_messages and (channel.type.name == "text"):
+                await client.send_message(channel, msg)
+                break
+
 ##### ON READY #####
+
 
 # prints to the console when the bot is online
 @client.event
