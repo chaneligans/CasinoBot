@@ -2,6 +2,7 @@ import time
 from operator import itemgetter
 import discord
 import casinodb
+import random
 
 
 # returns the amount of gold a user has
@@ -43,7 +44,7 @@ async def bet_is_enough(member_id, bet_amount, server_id):
 # gives user daily gold
 # returns a messagae with the new currency amount
 async def daily_gold(member_id, server_id):
-    daily_amt = 125
+    daily_amt = random.randint(200, 800)
     hour_in_secs = 60.0 * 60.0
     last_daily_recieved_time = await casinodb.db_get_last_blessing_time(member_id, server_id)
     next_available_time = last_daily_recieved_time + hour_in_secs
@@ -53,7 +54,7 @@ async def daily_gold(member_id, server_id):
 
     if last_daily_recieved_time == -1 or time_remaining < 0:
         new_currency_amt = await update_currency(member_id, daily_amt, server_id)
-        message = ':money_mouth: The casino gods have awarded you with 125 gold!! Your new balance is {0} gold :money_mouth:'.format(new_currency_amt)
+        message = ':money_mouth: The casino gods have awarded you with {1} gold!! Your new balance is {0} gold :money_mouth:'.format(new_currency_amt, daily_amt)
         await casinodb.db_set_new_blessing_time(member_id, server_id)
     else:
         message = 'The gods don\'t feel like blessing you right now... Try again in {0} minutes and {1} seconds.'.format(time_remaining_min, time_remaining_sec)

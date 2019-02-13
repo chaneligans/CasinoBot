@@ -14,7 +14,7 @@ import game_lightning
 import game_rock_paper_scissors
 import sponsors
 
-BOT_PREFIX = ("!!!", 'cas', 'casino')
+BOT_PREFIX = ("$", 'cas', 'casino')
 TOKEN = CasinoBotToken.get_token()
 
 client = Bot(command_prefix=BOT_PREFIX)
