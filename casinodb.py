@@ -28,6 +28,7 @@ except Exception as e:
 # if the user is not found, addes the user into the database
 async def validate_user(member_id, server_id):
     try:
+        database.ping(reconnect=True)
         cursor = database.cursor()
         sql = 'SELECT userID, serverID FROM user ' \
               'WHERE userID = "{0}" AND serverID = "{1}";'.format(member_id, server_id)
@@ -40,6 +41,7 @@ async def validate_user(member_id, server_id):
 
 async def insert_new_user(member_id, server_id):
     try:
+        database.ping(reconnect=True)
         cursor = database.cursor()
         sql = "INSERT INTO user " \
               "VALUES ({0}, {1}, 0, -1);".format(member_id, server_id)
@@ -68,6 +70,7 @@ async def db_get_user_info(member_id, server_id):
 # tupule indices: # [0] = user (member) id, [1] = server id, [2] = currency amount, [3] = last daily time (secs)
 async def db_get_server_members(server_id):
     try:
+        database.ping(reconnect=True)
         cursor = database.cursor()
         sql = 'SELECT * FROM user ' \
               'WHERE serverID = {0}'.format(server_id)
